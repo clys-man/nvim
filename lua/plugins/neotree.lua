@@ -151,6 +151,7 @@ return {
           -- ["t"] = "open_tab_drop",
           ['w'] = 'open_with_window_picker',
           --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+          ['h'] = 'close_node',
           ['C'] = 'close_node',
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
@@ -201,6 +202,7 @@ return {
             '.git',
             '.python-version',
             '.venv',
+            'vendor',
           },
           hide_by_pattern = { -- uses glob style patterns
             --"*.meta",
