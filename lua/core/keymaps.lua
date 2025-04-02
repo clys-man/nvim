@@ -70,3 +70,35 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Manim stuff
+local function get_class_name()
+  local node = vim.treesitter.get_node()
+  while node do
+    if node:type() == 'class_definition' then
+      local name_node = node:field('name')[1]
+      if name_node then
+        local class_name = vim.treesitter.get_node_text(name_node, 0)
+        return class_name
+      end
+    end
+    node = node:parent()
+  end
+  return nil
+end
+
+local function render_scene()
+  local class_name = get_class_name()
+  if not class_name then
+    print 'No class name found at cursor!'
+    return
+  end
+
+  local file_path = vim.fn.expand '%:p'
+
+  local cmd = string.format('manim -pqh "%s" "%s"', file_path, class_name)
+
+  vim.cmd('!' .. cmd)
+end
+
+vim.keymap.set('n', '<leader>mm', render_scene, { desc = 'Render Manim Scene' })
