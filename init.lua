@@ -30,5 +30,4 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.debug',
-  require 'plugins.venv',
 }
