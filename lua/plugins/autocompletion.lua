@@ -1,13 +1,6 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   dependencies = {
-    {
-        'zbirenbaum/copilot-cmp',
-        dependencies = { 'zbirenbaum/copilot.lua' },
-        config = function()
-            require('copilot_cmp').setup()
-        end,
-    },
     -- Snippet Engine & its associated nvim-cmp source
     {
       'L3MON4D3/LuaSnip',
@@ -48,7 +41,7 @@ return { -- Autocompletion
     luasnip.config.setup {}
 
     local kind_icons = {
-        Copilot = '',
+      Copilot = '',
       Text = '󰉿',
       Method = 'm',
       Function = '󰊕',
@@ -155,12 +148,12 @@ return { -- Autocompletion
         end, { 'i', 's' }),
       },
       sources = {
-         { name = 'copilot' },
         {
           name = 'lazydev',
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
           group_index = 0,
         },
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },

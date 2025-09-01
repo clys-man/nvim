@@ -1,5 +1,5 @@
-require 'core.options' -- Load general options
-require 'core.keymaps' -- Load general keymaps
+require 'core.options'  -- Load general options
+require 'core.keymaps'  -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -23,6 +23,7 @@ require('lazy').setup {
   require 'plugins.telescope',
   require 'plugins.lsp',
   require 'plugins.autocompletion',
+  require 'plugins.copilot',
   require 'plugins.none-ls',
   require 'plugins.gitsigns',
   require 'plugins.conform',
@@ -30,5 +31,4 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.debug',
-  require 'plugins.copilot',
 }
