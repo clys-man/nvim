@@ -7,7 +7,6 @@ return {
 
       configs.setup {
         ensure_installed = {
-          'bend',
           'lua',
           'python',
           'javascript',
@@ -38,23 +37,6 @@ return {
         highlight = { enable = true },
         indent = { enable = true },
       }
-
-      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-      parser_config.bend = {
-        install_info = {
-          url = 'https://github.com/HigherOrderCO/tree-sitter-bend',
-          files = { 'src/parser.c', 'src/scanner.c' },
-          branch = 'main',
-        },
-      }
-
-      vim.filetype.add {
-        extension = {
-          bend = 'bend',
-        },
-      }
-
-      vim.treesitter.language.register('bend', { 'bend' })
     end,
   },
 }
