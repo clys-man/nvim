@@ -34,4 +34,5 @@ require('lazy').setup {
   require 'plugins.debug',
   require 'plugins.copilot',
   require 'plugins.vimtex',
+  require 'plugins.snacks',
 }
