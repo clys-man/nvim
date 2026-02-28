@@ -40,6 +40,45 @@ return { -- Autocompletion
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
+    local s = luasnip.snippet
+    local t = luasnip.text_node
+    local i = luasnip.insert_node
+
+    luasnip.add_snippets('tex', {
+      s('figc', {
+        t { '\\begin{figure}[htpb]', '\t\\centering', '\t\\caption{' },
+        i(1, 'Lorem ipsum dolor sit amet'),
+        t { '}', '\t\\label{fig:' },
+        i(2, 'lorem_ipsum'),
+        t { '}', '\t', '\t\\vspace{0.2cm}', '\t\\includegraphics[width=' },
+        i(3, '0.75'),
+        t '\\textwidth]{',
+        i(4, 'path/to/image.png'),
+        t { '}', '\t', '\t\\vspace{0.2cm}', '\t{\\footnotesize Source: ' },
+        i(5, 'Lorem ipsum'),
+        t { '}', '\\end{figure}' },
+      }),
+      s('tabc', {
+        t { '\\begin{table}[htpb]', '\t\\centering', '\t\\caption{' },
+        i(1, 'Lorem ipsum'),
+        t { '}', '\t\\label{tab:' },
+        i(2, 'lorem_ipsum'),
+        t { '}', '\t', '\t\\begin{tabular}{' },
+        i(3, 'lccc'),
+        t { '}', '\t\t\\toprule', '\t\t\\textbf{' },
+        i(4, 'Header 1'),
+        t '} & \\textbf{',
+        i(5, 'Header 2'),
+        t('} \\\\', '\t\t\\midrule', '\t\t'),
+        i(6, 'Valor 1'),
+        t ' & ',
+        i(7, 'Valor 2'),
+        t { ' \\\\', '\t\t\\bottomrule', '\t\\end{tabular}', '\t', '\t\\vspace{0.2cm}', '' },
+        i(8, 'Lorem ipsum'),
+        t { '}', '\\end{table}' },
+      }),
+    })
+
     local kind_icons = {
       Copilot = '',
       Text = '󰉿',
